@@ -1,0 +1,161 @@
+﻿@model MyTinyBank.Core.Model.Customer
+
+@{ ViewData["Title"] = "Customer Detail"; }
+
+<div class="text-center">
+    <h1 class="display-5">@Model.Firstname @Model.Lastname</h1>
+</div>
+
+<div class="mb-3">
+
+    <input class="js-customer-id" type="hidden" value="@Model.CustomerId" />
+    <br>
+
+    <a href="/account/@Model.CustomerId/AddAccountForm">Add Account</a>
+    &emsp;
+    &emsp;
+    <a href="/customer/accCard/@Model.CustomerId">Show Account-Card</a>
+    &emsp;
+    &emsp;
+    <button type="button" class="btn btn-primary js-account-card">
+        Show Account-Card
+    </button>
+    <br>
+    <br>
+    <table class="table tableAccCard" border="1">
+        <thead>
+
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+
+
+
+    <br>
+    <br>
+    <br>
+    <label for="lastname" class="form-label">Surname:</label>
+    <input class="form-control js-last-name" id="lastname" value="@Model.Lastname">
+    <br>
+    <label for="firstname" class="form-label">Firstname:</label>
+    <input class="form-control js-first-name" id="firstname" value="@Model.Firstname">
+    <br>
+    <label for="countrycode" class="form-label">Country Code:</label>
+    <select class="form-control js-country-code" id="countryCode" selected="@Model.CountryCode">
+        <option value="GR">GR</option>
+        <option value="IT">IT</option>
+        <option value="CY">CY</option>
+    </select>
+    <br>
+    <label for="vatnumber" class="form-label">Vat Number:</label>
+    <input class="form-control js-vat-number" id="vatnumber" value="@Model.VatNumber">
+    <br>
+    <label for="address" class="form-label">Address:</label>
+    <input class="form-control js-address" id="address" value="@Model.Address">
+    <br>
+    <label for="dateofbirth" class="form-label">Date Of Birth:</label>
+    <input class="form-control js-date-of-birth" id="dateofbirth" value="@Model.DateOfBirth">
+    <br>
+    <label for="email" class="form-label">Email:</label>
+    <input class="form-control js-email" id="email" value="@Model.Email">
+    <br>
+    <label for="phone" class="form-label">Phone:</label>
+    <input class="form-control js-phone" id="phone" value="@Model.Phone">
+    <br>
+    <label for="customertype" class="form-label">Customer Type:</label>
+    <select class="form-control js-customer-type" name="customerType" id="customerType" value="@Model.CustType">
+        <option value="1">LegalEntity</option>
+        <option value="2">PhysicalEntity</option>
+    </select>
+    <div class="text-center">
+        <button type="button" class="btn btn-primary js-update-customer">
+            Update
+        </button>
+    </div>
+    <div class="alert alert-success js-alert-success collapse in" role="alert">
+        update successful
+    </div>
+    <div class="alert alert-danger js-alert-failure collapse in" role="alert">
+        update failure
+    </div>
+    <br>
+    <br>
+
+    @*@{int countAccount = 0; }
+        @foreach (var account in Model.Accounts)
+        {
+            countAccount++;
+            <span>@countAccount) </span><a href="/Customer/@account.AccountId/accountDtls">@account.AccountId</a>
+            <br>
+        }*@
+
+
+
+
+    <label for="phone" class="form-label"><strong>Accounts:</strong></label><br>
+    <table class="table accounts-table">
+        <thead>
+            <tr>
+                <th scope="col">IBAN</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in Model.Accounts)
+            {
+                <tr>
+                    <td>
+                        <div class="band-comments-div">
+                            <a name="@account.AccountId" href="aekara" data-toggle="modal" data-target="#exampleModal">@account.AccountId</a>
+                        </div>
+                    </td>
+                    <td>@account.Balance</td>
+                    <td>@account.AuditInfo.Created.ToString("dd/MM/yyyy")</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="Account Details" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input class="js-hidden-acc" type="hidden" value="aek21" />
+                    <table class="table js-account-dtls">
+                        <thead>
+                            <tr>
+                                <th scope="col">AccountId</th>
+                                <th scope="col">Balance</th>
+                                <th scope="col">AccountState</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary js-save-change-acc-state">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

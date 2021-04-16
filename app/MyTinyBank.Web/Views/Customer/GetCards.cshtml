@@ -1,0 +1,63 @@
+﻿@model List<MyTinyBank.Core.Constants.AccCard>
+
+@{ ViewData["Title"] = "AccountId - CardNumber"; }
+
+<div class="text-center">
+    <h1 class="display-5">AccountId - CardNumber</h1>
+</div>
+
+
+
+
+<div class="mb-3">
+
+    @if (Model.Count > 0)
+    {
+        <a href="/card/@Model[0].CustomerId/AddCardForm">Add New Card</a>
+    }
+
+    &emsp;
+    &emsp;
+
+    @if (Model.Count > 0)
+    {
+        <a href="/card/@Model[0].CustomerId/AddExistingCardForm">Add existing Card</a>
+    }
+
+    <br>&emsp;
+    <table class="table accountid-cardnumber-table" border="1">
+        <thead>
+            <tr>
+                <th scope="col" style="text-align:center; vertical-align:middle">AccountId</th>
+                <th scope="col" style="text-align:center; vertical-align:middle">CardNumber</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in Model)
+            {
+                <tr>
+                    <td align="center" style="vertical-align: middle">
+                        @account.Account
+                    </td>
+                    <td align="center" style="vertical-align: middle">
+                        @if (account.ListaCard.Count == 0)
+                        {
+                            <hr>
+                        }
+                        else
+                        {
+                            @foreach (var c in account.ListaCard)
+                            {
+                                @c<br>
+                            }
+                        }
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+
+
+</div>

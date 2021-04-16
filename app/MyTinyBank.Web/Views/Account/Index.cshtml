@@ -1,0 +1,39 @@
+﻿@model List<MyTinyBank.Web.MyModel.AccntsList>
+ 
+@{
+    ViewData["Title"] = "Accounts list";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-5">Accounts list</h1>
+    <br>
+    <button type="button" onclick="location.href='/Account/AddAccountForm'" class="btn btn-outline-primary">add account</button>
+
+    @*
+        <br>
+        <input class="form-control w-25 js-search-account-number" id="accountnumber" placeholder="search with accountNumber">
+        <input class="form-control w-25 js-search-vat-number" id="vatnumber" placeholder="search with vatNumber">
+        <button type="button" class="btn btn-outline-primary js-search-account">search</button>
+    *@
+
+    <table class="table js-account-list">
+        <thead>
+            <tr>
+                <th scope="col">AccountId</th>
+                <th scope="col">Vat number</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var account in Model)
+            {
+<tr>
+    <td><a href="https://localhost:5001/Account/@account.AccountNumber">@account.AccountNumber</a></td>
+    <td>@account.VatNumber</td>
+</tr>            }
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,59 @@
+﻿@{ ViewData["Title"] = "Add Customer Form"; }
+
+<div class="text-center">
+    <h1 class="display-5">Add Customer Form</h1>
+</div>
+
+<div class="mb-3">
+
+    <label for="lastname" class="form-label">Surname:</label>
+    <input class="form-control js-last-name" id="lastname" value="">
+    <br>
+    <label for="firstname" class="form-label">Firstname:</label>
+    <input class="form-control js-first-name" id="firstname" value="">
+    <br>
+    <label for="countrycode" class="form-label">Country Code:</label>
+    <select class="form-control js-country-code" name="countryCode" id="countryCode">
+        <option value="GR">GR</option>
+        <option value="IT">IT</option>
+        <option value="CY">CY</option>
+    </select>
+    @*<input class="form-control js-country-code" id="countrycode" value="">*@
+    <br>
+    <label for="vatnumber" class="form-label">Vat Number:</label>
+    <input class="form-control js-vat-number" id="vatnumber" value="">
+    <br>
+    <label for="address" class="form-label">Address:</label>
+    <input class="form-control js-address" id="address" value="">
+    <br>
+    <label for="dateofbirth" class="form-label">Date Of Birth: (dd/mm/yyy)</label>
+    <input class="form-control js-date-of-birth" id="dateofbirth" value="">
+    <br>
+    <label for="email" class="form-label">Email:</label>
+    <input class="form-control js-email" id="email" value="">
+    <br>
+    <label for="phone" class="form-label">Phone:</label>
+    <input class="form-control js-phone" id="phone" value="">
+    <br>
+    <label for="customertype" class="form-label">Customer Type:</label>
+    <select class="form-control js-customer-type" name="customerType" id="customerType">
+        <option value="1">LegalEntity</option>
+        <option value="2">PhysicalEntity</option>
+    </select>
+
+    <br>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-primary js-add-customer">
+            Add Customer
+        </button>
+    </div>
+
+    <div class="alert alert-success js-alert-success collapse in" role="alert">
+        add successful
+    </div>
+    <div class="alert alert-danger js-alert-failure collapse in" role="alert">
+        add failure
+    </div>
+
+</div>

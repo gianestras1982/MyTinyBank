@@ -1,0 +1,46 @@
+﻿@model List<MyTinyBank.Core.Model.Customer>
+ 
+@{
+    ViewData["Title"] = "Customers list";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-5">Customers list</h1>
+    <br>
+    <button type="button" onclick="location.href='/customer/AddCustomerForm'" class="btn btn-outline-primary">
+        add customer
+    </button>
+
+    <br>
+    <br>
+    <br>
+
+    <input class="js-search-vat-number" id="vatnumber" placeholder="search with vatNumber">
+    <input class="js-search-first-name" id="firstname" placeholder="search with firstName">
+    <input class="js-search-last-name" id="lastname" placeholder="search with lastName">
+    <button type="button" class="btn btn-outline-primary js-search-customer">search</button>
+
+    <table class="table js-customers-list">
+        <thead>
+            <tr>
+                <th scope="col">Vat number</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var customer in Model)
+            {
+            <tr>
+                <td><a href="https://localhost:5001/Customer/@customer.CustomerId">@customer.VatNumber</a></td>
+                <td>@customer.Firstname</td>
+                <td>@customer.Lastname</td>
+            </tr>            
+            }
+
+        </tbody>
+    </table>
+</div>

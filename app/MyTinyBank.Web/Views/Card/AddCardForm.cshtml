@@ -1,0 +1,36 @@
+﻿@model Guid
+
+@{ ViewData["Title"] = "Add New Card Form"; }
+
+<div class="text-center">
+    <h1 class="display-5">Add New Card Form</h1>
+</div>
+
+
+
+<div class="mb-3">
+
+    <label for="accountNumber" class="form-label">Account Number:</label>
+    <input class="form-control js-account_number" id="accountNumber" value="">
+    <br>
+    <label for="cardNumber" class="form-label">Card Number:</label>
+    <input class="form-control js-card-number" id="cardNumber" value="" readonly>
+    <br>
+    <label for="expirationDate" class="form-label">Expiration Date:</label>
+    <input class="form-control js-expiration-date" id="expirationDate" readonly>
+    <br>
+    <label for="customerId" class="form-label">Customer Id:</label>
+    <input class="form-control js-customer-id" id="customerId" value="@Model" readonly>
+    <br>
+
+    <button type="button" class="btn btn-primary js-add-card-save">
+        Add Card
+    </button>
+
+    <div class="alert alert-success js-alert-success collapse in" role="alert">
+        add successful
+    </div>
+    <div class="alert alert-danger js-alert-failure collapse in" role="alert">
+        add failure
+    </div>
+</div>

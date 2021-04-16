@@ -1,0 +1,35 @@
+﻿@model Guid
+
+@{ ViewData["Title"] = "Add Account Form"; }
+
+<div class="text-center">
+    <h1 class="display-5">Add Account Form</h1>
+</div>
+
+
+
+<div class="mb-3">
+
+
+    <label for="currency" class="form-label">Currency:</label>
+    <input class="form-control js-currency" id="currency" value="">
+    <br>
+    <label for="description" class="form-label">Description:</label>
+    <input class="form-control js-description" id="description" value="">
+    <br>
+    <label for="customerId" class="form-label">Customer Id:</label>
+    <input class="form-control js-customer-id" id="customerId" value="@Model" readonly>
+    <br>
+
+
+    <button type="button" class="btn btn-primary js-add-account-save">
+        Add Account
+    </button>
+
+    <div class="alert alert-success js-alert-success collapse in" role="alert">
+        add successful
+    </div>
+    <div class="alert alert-danger js-alert-failure collapse in" role="alert">
+        add failure
+    </div>
+</div>
